@@ -9,6 +9,7 @@ from selenium.webdriver.firefox.options import Options
 import time
 from webdriver_manager.firefox import GeckoDriverManager
 from datetime import datetime
+import os
 
 browser_options = Options()
 browser_options.add_argument("--headless")
@@ -106,11 +107,23 @@ def get_my_deck(email, password, send_to_email, smtp_host, test_email, refresh_t
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Steam Deck Stock Checker')
-    parser.add_argument('--email', required=True, help='Email address to send notifications from')
-    parser.add_argument('--password', required=True, help='Password for the email account')
-    parser.add_argument('--send_to_email', required=True, help='Email address to send notifications to')
-    parser.add_argument('--smtp_host', required=True, help='SMTP host for sending email')
+    parser.add_argument('--email', help='Email address to send notifications from')
+    parser.add_argument('--password', help='Password for the email account')
+    parser.add_argument('--send_to_email', help='Email address to send notifications to')
+    parser.add_argument('--smtp_host', help='SMTP host for sending email')
     parser.add_argument('--test_email', action='store_true', help='Send a test email and exit')
     parser.add_argument('--refresh_time', type=int, default=3600, help='Time in seconds between page refreshes')
     args = parser.parse_args()
-    get_my_deck(args.email, args.password, args.send_to_email, args.smtp_host, args.test_email, args.refresh_time)
+
+    # Check for arguments or environment variables
+    email = args.email or os.getenv('EMAIL')
+    password = args.password or os.getenv('PASSWORD')
+    send_to_email = args.send_to_email or os.getenv('SEND_TO_EMAIL')
+    smtp_host = args.smtp_host or os.getenv('SMTP_HOST')
+    test_email = args.test_email or os.getenv('TEST_EMAIL', 'false').lower() == 'true'
+    refresh_time = args.refresh_time or int(os.getenv('REFRESH_TIME', 3600))
+
+    if not email or not password or not send_to_email or not smtp_host:
+        parser.error('Email, password, send_to_email, and smtp_host must be provided either as arguments or environment variables.')
+
+    get_my_deck(email, password, send_to_email, smtp_host, test_email, refresh_time)

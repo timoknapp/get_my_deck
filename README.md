@@ -44,6 +44,7 @@ You can pass the following parameters to the script via the command line or envi
 | `--smtp_host`   | SMTP host for sending email                      | Yes      | N/A     |
 | `--test_email`  | Send a test email and exit                       | No       | False   |
 | `--refresh_time`| Time in seconds between page refreshes           | No       | 3600    |
+| `--devices_to_monitor`| List of devices to monitor, separated by space. e.g. "Steam Deck 512 GB OLED" "Steam Deck 1TB OLED". Use the names from this [page](https://store.steampowered.com/sale/steamdeckrefurbished/) | No       | All devices |
 
 ### Environment Variables
 
@@ -55,6 +56,7 @@ You can also set the parameters via environment variables:
 - `SMTP_HOST`
 - `TEST_EMAIL` (set to `true` to send a test email and exit)
 - `REFRESH_TIME` (time in seconds between page refreshes, default is 3600)
+- `DEVICES_TO_MONITOR` (comma-separated list of devices to monitor, e.g. "Steam Deck 512 GB OLED,Steam Deck 1TB OLED". Use the names from this [page](https://store.steampowered.com/sale/steamdeckrefurbished/), default is all devices)
 
 ## Credits
 

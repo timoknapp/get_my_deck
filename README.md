@@ -27,7 +27,17 @@ python get_my_deck.py --email <your_email> --password <your_password> --send_to_
    ```
 2. Run the Docker container:
    ```sh
-   docker run get_my_deck --email <your_email> --password <your_password> --send_to_email <recipient_email> --smtp_host <smtp_host> [--test_email] [--refresh_time <seconds>]
+   docker run \
+       -d \
+       --name get_my_deck \
+       -e EMAIL=<your_email> \
+       -e PASSWORD=<your_password> \
+       -e SEND_TO_EMAIL=<recipient_email> \
+       -e SMTP_HOST=<smtp_host> \
+       -e TEST_EMAIL=<true|false> \
+       -e REFRESH_TIME=<seconds> \
+       -e DEVICES_TO_MONITOR=<devices> \
+       get_my_deck
    ```
 
 ## Parameters

@@ -61,6 +61,9 @@ or
 
 You can pass the following parameters to the script via the command line or environment variables.
 
+> [!Note]
+> Only one type of notification method (email or Signal) is supported at a time. If both types of parameters are provided, the script will show an error message and quit.
+
 ### Arguments
 
 | Parameter             | Description                                      | Required | Default |
@@ -93,7 +96,6 @@ You can also set the parameters via environment variables:
 
 ## Note
 
-Only one type of notification method (email or Signal) is supported at a time. If both types of parameters are provided, the script will show an error message and quit.
 
 ## Credits
 

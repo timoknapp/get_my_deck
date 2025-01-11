@@ -94,9 +94,6 @@ You can also set the parameters via environment variables:
 - `REFRESH_TIME` (time in seconds between page refreshes, default is 3600)
 - `DEVICES_TO_MONITOR` (comma-separated list of devices to monitor, e.g. "Steam Deck 512 GB OLED,Steam Deck 1TB OLED". Use the names from this [page](https://store.steampowered.com/sale/steamdeckrefurbished/), default is all devices)
 
-## Note
-
-
 ## Credits
 
 This is a fork of [maroofc/get_my_deck](https://github.com/maroofc/get_my_deck).
